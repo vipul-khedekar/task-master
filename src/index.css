@@ -1,0 +1,15 @@
+:root {
+    --fontPoppins: 'Poppins', sans-serif;
+    --colorBlueLight: #3b43c2;
+    --colorBlueMid: #364296;
+    --colorBlueDark: #202b87;
+    --colorYellowLight: #fece30;
+    --colorYellowDark: #ffa841;
+}
+
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: var(--fontPoppins);
+}

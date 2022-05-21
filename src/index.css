@@ -27,3 +27,29 @@ body {
     font-size: 2rem;
     font-weight: 700;
 }
+
+.app-container {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 30vw 70vw;
+    background-color: var(--colorYellowDark);
+    height: 60vh;
+}
+
+.input-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorBlueLight);
+    height: 15vh;
+}
+
+.buttons-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorYellowLight);
+    height: 15vh;
+}

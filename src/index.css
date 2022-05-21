@@ -36,6 +36,59 @@ body {
     height: 60vh;
 }
 
+.topic-container {
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
+.topic-container > h3 {
+    color: #ffffff;
+}
+
+.topic-container > form {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3px;
+}
+
+.topic-container > form > button {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.topic-container > form > button:hover {
+    border: 1px solid #ffffff;
+}
+
+.topic-container > form > input {
+    padding: 3px;
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+.topic-container > ul {
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    overflow-y: scroll;
+}
+
+.topic-container > ul > li {
+    padding: 0.5rem;
+    color: #ffffff;
+    list-style: square;
+}
+
+.topic-container > ul > li:hover {
+    font-weight: 700;
+    cursor: pointer;
+}
+
 .input-container {
     box-sizing: border-box;
     display: flex;

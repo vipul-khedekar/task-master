@@ -20,7 +20,7 @@
         <div class="topic-container">
             <h3>Topics</h3>
 
-            <form method="post">
+            <form data-topic-form method="post">
                 <button type="submit">+</button>
                 <input type="text" autocomplete="off" placeholder="New topic name goes here">
             </form>
@@ -43,7 +43,7 @@
             <div class="tasks-list-container">
                 <div class="task-item">
                     <p>Task 1</p>
-                    <button type="button">Delete</button>
+                    <button data-task-delete type="button">Delete</button>
                 </div>
 
                 <div class="task-item">
@@ -60,13 +60,15 @@
     </div>
 
     <div class="input-container">
-        <form method="post">
+        <form data-task-form method="post">
             <button type="submit">+</button>
             <input type="text" autocomplete="off" placeholder="Input new task details">
         </form>
     </div>
 
     <div class="buttons-container">
+        <button type="button">Delete Topic</button>
+        <button type="button">Delete All Tasks</button>
     </div>
 </body>
 </html>

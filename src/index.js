@@ -1,15 +1,16 @@
 const topicsContainer = document.querySelector(`[data-topics-container]`);
+const topicForm = document.querySelector(`[data-topic-form]`);
+const topicFormInput = document.querySelector(`[data-topic-form-input]`);
 
-let topicsList = [
-    {
-        id: 1,
-        topicName: `one`,
-    },
-    {
-        id: 2,
-        topicName: `two`,
+let topicsList = [];        //Dummy elements to check code.
+
+function createList(topicInput) {
+    return {
+        id: Date.now().toString(),
+        topicName: topicInput,
+        task: [],
     }
-];                      //Dummy elements to check code.
+}
 
 function clearAllTopics(topicsContainer) {
     while(topicsContainer.firstChild) {
@@ -28,3 +29,13 @@ function renderTopicsList() {
 }
 
 renderTopicsList();
+
+topicForm.addEventListener(`submit`, (e) => {
+    e.preventDefault();
+    const topicInput = topicFormInput.value;
+    if(topicInput === `` || topicInput == null) {return}
+    const list = createList(topicInput);
+    topicFormInput.value = null;
+    topicsList.push(list);
+    renderTopicsList();
+});

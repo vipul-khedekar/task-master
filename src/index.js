@@ -2,7 +2,14 @@ const topicsContainer = document.querySelector(`[data-topics-container]`);
 const topicForm = document.querySelector(`[data-topic-form]`);
 const topicFormInput = document.querySelector(`[data-topic-form-input]`);
 
-let topicsList = [];        //Dummy elements to check code.
+const topicsLocalStorageKey = `topicsKey`;
+let topicsList = JSON.parse(localStorage.getItem(topicsLocalStorageKey)) || [];
+
+function clearAllTopics(topicsContainer) {
+    while(topicsContainer.firstChild) {
+        topicsContainer.firstChild.remove();
+    }
+}
 
 function createList(topicInput) {
     return {
@@ -12,10 +19,8 @@ function createList(topicInput) {
     }
 }
 
-function clearAllTopics(topicsContainer) {
-    while(topicsContainer.firstChild) {
-        topicsContainer.firstChild.remove();
-    }
+function saveTopicToLocal() {
+    localStorage.setItem(topicsLocalStorageKey, JSON.stringify(topicsList));
 }
 
 function renderTopicsList() {
@@ -28,8 +33,6 @@ function renderTopicsList() {
     });
 }
 
-renderTopicsList();
-
 topicForm.addEventListener(`submit`, (e) => {
     e.preventDefault();
     const topicInput = topicFormInput.value;
@@ -37,5 +40,8 @@ topicForm.addEventListener(`submit`, (e) => {
     const list = createList(topicInput);
     topicFormInput.value = null;
     topicsList.push(list);
+    saveTopicToLocal();
     renderTopicsList();
 });
+
+renderTopicsList();

@@ -3,7 +3,9 @@ const topicForm = document.querySelector(`[data-topic-form]`);
 const topicFormInput = document.querySelector(`[data-topic-form-input]`);
 
 const topicsLocalStorageKey = `topicsKey`;
+const selectedTopicIdLocalStorageKey = `selectedTopicKey`;
 let topicsList = JSON.parse(localStorage.getItem(topicsLocalStorageKey)) || [];
+let selectedTopicId = localStorage.getItem(selectedTopicIdLocalStorageKey);
 
 function clearAllTopics(topicsContainer) {
     while(topicsContainer.firstChild) {
@@ -21,6 +23,7 @@ function createList(topicInput) {
 
 function saveTopicToLocal() {
     localStorage.setItem(topicsLocalStorageKey, JSON.stringify(topicsList));
+    localStorage.setItem(selectedTopicIdLocalStorageKey, selectedTopicId);
 }
 
 function renderTopicsList() {
@@ -29,6 +32,9 @@ function renderTopicsList() {
         const topicNew = document.createElement(`li`);
         topicNew.dataset.id = topic.id;
         topicNew.innerText = topic.topicName;
+        if(topic.id === selectedTopicId) {
+            topicNew.style.fontWeight = `700`;
+        }
         topicsContainer.append(topicNew);
     });
 }
@@ -42,6 +48,14 @@ topicForm.addEventListener(`submit`, (e) => {
     topicsList.push(list);
     saveTopicToLocal();
     renderTopicsList();
+});
+
+topicsContainer.addEventListener(`click`, (e) => {
+    if(e.target.tagName.toLowerCase() === `li`) {
+        selectedTopicId = e.target.dataset.id;
+        saveTopicToLocal();
+        renderTopicsList();
+    }
 });
 
 renderTopicsList();

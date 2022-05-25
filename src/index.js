@@ -1,6 +1,7 @@
 const topicsContainer = document.querySelector(`[data-topics-container]`);
 const topicForm = document.querySelector(`[data-topic-form]`);
 const topicFormInput = document.querySelector(`[data-topic-form-input]`);
+const topicsDeleteButton = document.querySelector(`[data-topics-delete]`);
 
 const topicsLocalStorageKey = `topicsKey`;
 const selectedTopicIdLocalStorageKey = `selectedTopicKey`;
@@ -56,6 +57,12 @@ topicsContainer.addEventListener(`click`, (e) => {
         saveTopicToLocal();
         renderTopicsList();
     }
+});
+
+topicsDeleteButton.addEventListener(`click`, () => {
+    topicsList = [];
+    saveTopicToLocal();
+    renderTopicsList();
 });
 
 renderTopicsList();
